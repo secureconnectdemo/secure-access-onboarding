@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Access Onboarding Task Matrix</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background-color: #f7f9fc; margin: 0; padding: 20px; }
+    h1 { text-align: center; color: #003366; margin-bottom: 30px; }
+    .task-section { background: #ffffff; border-radius: 12px; margin-bottom: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .task-header { font-size: 18px; font-weight: bold; color: #003366; margin-bottom: 10px; }
+    .timeline { font-size: 14px; font-style: italic; color: #666; margin-bottom: 10px; }
+    ul.subtasks { list-style-type: none; padding-left: 0; margin: 0; }
+    ul.subtasks li { margin-bottom: 8px; line-height: 1.5; }
+    ul.subtasks li::before { content: '\2713'; color: green; display: inline-block; width: 20px; }
+    .nested-subtask::before { content: '\2022'; color: #0070d2; display: inline-block; width: 20px; }
+    .comment-box { width: 100%; padding: 10px; margin-top: 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 6px; resize: vertical; background: #fdfdfd; }
+    .pilot-sublist li::before { content: '\25C6'; color: #0070d2; display: inline-block; width: 20px; }
+    details.pilot-plan { margin-top: 10px; background: #f1f6fb; border: 1px solid #cbdff4; border-radius: 8px; padding: 10px; }
+    summary.pilot-title { font-weight: bold; font-size: 15px; color: #003366; cursor: pointer; outline: none; }
+    select.status-dropdown {
+      padding: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    select.status-dropdown option[value='Blocked'] {
+      background-color: #ffe6e6;
+      color: #cc0000;
+    }
+    input.owner-input {
+      padding: 4px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .timestamp {
+      font-size: 12px;
+      color: #888;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Secure Access Onboarding Task Matrix</h1>
+
+  <div class="task-section">
+    <div class="task-header">✅ 1. Send Introduction Email to Customer & Account Team</div>
+    <div class="timeline">SLA/Timeline: Day 0–2</div>
+    <ul class="subtasks">
+      <li><strong>Status:</strong> <select class="status-dropdown"><option value="Not Started">Not Started</option><option value="In Progress">In Progress</option><option value="Blocked">Blocked</option><option value="Completed">Completed</option></select></li>
+      <li><strong>Owner:</strong> <input class="owner-input" type="text" placeholder="Assign name here"></li>
+      <li><strong>Comments:</strong><br><textarea class="comment-box" placeholder="Add internal notes or customer feedback..."></textarea><div class="timestamp">Last updated: <span class="ts">--</span></div></li>
+      <li>Identify PAS (if EA) and coordinate EA provisioning</li>
+      <li>Identify provisioning contact by reviewing the web order</li>
+      <li>Verify contact received the claim code via Paid Accounts Tableau Report</li>
+      <li>Email customer contacts shared by Sales or found in CS Console</li>
+      <li>Review Discovery Questionnaire responses</li>
+    </ul>
+  </div>
+
+  <!-- You can add more task-sections following the same format -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".comment-box").forEach((box) => {
+        box.addEventListener("input", function () {
+          const ts = this.parentElement.querySelector(".ts");
+          if (ts) {
+            const now = new Date();
+            ts.textContent = now.toLocaleString();
+          }
+        });
+      });
+
+      document.querySelectorAll(".status-dropdown").forEach((dropdown) => {
+        dropdown.addEventListener("change", function () {
+          const taskSection = this.closest(".task-section");
+          if (this.value === "Blocked") {
+            taskSection.style.border = "2px solid #cc0000";
+            taskSection.style.backgroundColor = "#fff2f2";
+          } else {
+            taskSection.style.border = "none";
+            taskSection.style.backgroundColor = "#ffffff";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
