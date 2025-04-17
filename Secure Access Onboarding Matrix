@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Access Onboarding Matrix</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background-color: #f7f9fc; margin: 0; padding: 20px; }
+    h1 { text-align: center; color: #003366; margin-bottom: 30px; }
+    .task-section { background: #ffffff; border-radius: 12px; margin-bottom: 20px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .task-header { font-size: 18px; font-weight: bold; color: #003366; margin-bottom: 10px; cursor: pointer; }
+    .timeline { font-size: 14px; font-style: italic; color: #666; margin-bottom: 10px; }
+    ul.subtasks { list-style-type: none; padding-left: 0; margin: 0; }
+    ul.subtasks li { margin-bottom: 8px; line-height: 1.5; }
+    ul.subtasks li::before { display: none; }
+    .nested-subtask::before { content: '\2022'; color: #0070d2; display: inline-block; width: 20px; }
+    .comment-box { width: 100%; padding: 10px; margin-top: 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 6px; resize: vertical; background: #fdfdfd; }
+    .pilot-sublist li::before { content: '\25C6'; color: #0070d2; display: inline-block; width: 20px; }
+    details.pilot-plan { margin-top: 10px; background: #f1f6fb; border: 1px solid #cbdff4; border-radius: 8px; padding: 10px; }
+    summary.pilot-title { font-weight: bold; font-size: 15px; color: #003366; cursor: pointer; outline: none; }
+    .timestamp { font-size: 12px; color: #888; margin-left: 8px; }
+    .note-output { white-space: pre-wrap; background: #f4f4f4; border-left: 4px solid #0070d2; padding: 12px; margin-top: 12px; display: none; }
+    .btn { padding: 8px 12px; font-size: 14px; margin-top: 8px; margin-right: 10px; cursor: pointer; border: none; border-radius: 4px; }
+    .btn-generate { background-color: #0070d2; color: white; }
+    .btn-reset { background-color: #f44336; color: white; }
+    .role-title { font-weight: bold; margin-top: 12px; color: #003366; }
+    .additional-notes, .blockers, .cross-sell, .case-open, .feature-request { margin-top: 15px; }
+    textarea { width: 100%; padding: 10px; font-size: 14px; resize: vertical; }
+  </style>
+</head>
+<body>
+  <h1>Secure Access Onboarding Task Matrix</h1>
+
+  <!-- Task 1 Section -->
+  <div class="task-section">
+    <div class="task-header" onclick="toggleVisibility(this)">1. Send Introduction Email to Customer & Account Team</div>
+    <div class="timeline">SLA/Timeline: Day 0–2</div>
+    <div class="role-title">Strategic CSS</div>
+    <ul class="subtasks">
+      <li><label><input type="checkbox" class="include-subtask"> Identified PAS (if EA) and coordinated EA provisioning</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Identified provisioning contact by reviewing the web order</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Verified contact received the claim code via Paid Accounts Tableau Report</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Emailed customer contacts shared by Sales or found in CS Console</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Reviewed Discovery Questionnaire responses</label></li>
+    </ul>
+
+    <div class="additional-notes">
+      <label for="additional-notes">Additional Notes:</label>
+      <textarea id="additional-notes">N/A</textarea>
+    </div>
+
+    <div class="blockers">
+      <label for="blockers">Blockers Identified:</label>
+      <textarea id="blockers">N/A</textarea>
+    </div>
+
+    <div class="cross-sell">
+      <label for="cross-sell">Cross-sell Opportunities Identified:</label>
+      <textarea id="cross-sell">N/A</textarea>
+    </div>
+
+    <div class="case-open">
+      <label for="case-open">Case Open (if applicable):</label>
+      <textarea id="case-open">N/A</textarea>
+    </div>
+
+    <div class="feature-request">
+      <label for="feature-request">Feature Request Open (if applicable):</label>
+      <textarea id="feature-request">N/A</textarea>
+    </div>
+
+    <button class="btn btn-generate" onclick="generateNote(this)">Generate Note for This Task</button>
+    <button class="btn btn-reset" onclick="resetForm(this)">Reset for This Task</button>
+    <div class="note-output"></div>
+  </div>
+
+  <!-- Task 2 Section -->
+  <div class="task-section">
+    <div class="task-header" onclick="toggleVisibility(this)">2. Internal Kick Off</div>
+    <div class="timeline">SLA/Timeline: Day 1–3</div>
+    <div class="role-title">Strategic CSS</div>
+    <ul class="subtasks">
+      <li><label><input type="checkbox" class="include-subtask"> Synced internally with Account Team and CSS</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Requested technical resource if not already assigned</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Reviewed handoff questionnaire (document in CS Console)</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Planned account team meeting</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Validated any restriction for the customer to participate in Advocacy programs</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Identified any blocker and flagged accordingly</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Sent internal questions in advance</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Documented information collected in Console Action Plan</label></li>
+    </ul>
+    <div class="role-title">Onboarding CSS</div>
+    <ul class="subtasks">
+      <li><label><input type="checkbox" class="include-subtask"> Led technical discovery questions</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Identified any blocker and flagged accordingly</label></li>
+      <li><label><input type="checkbox" class="include-subtask"> Identified regions where customer planned to deploy Secure Access</label></li>
+    </ul>
+
+    <div class="additional-notes">
+      <label for="additional-notes">Additional Notes:</label>
+      <textarea id="additional-notes">N/A</textarea>
+    </div>
+
+    <div class="blockers">
+      <label for="blockers">Blockers Identified:</label>
+      <textarea id="blockers">N/A</textarea>
+    </div>
+
+    <div class="cross-sell">
+      <label for="cross-sell">Cross-sell Opportunities Identified:</label>
+      <textarea id="cross-sell">N/A</textarea>
+    </div>
+
+    <div class="case-open">
+      <label for="case-open">Case Open (if applicable):</label>
+      <textarea id="case-open">N/A</textarea>
+    </div>
+
+    <div class="feature-request">
+      <label for="feature-request">Feature Request Open (if applicable):</label>
+      <textarea id="feature-request">N/A</textarea>
+    </div>
+
+    <button class="btn btn-generate" onclick="generateNote(this)">Generate Note for This Task</button>
+    <button class="btn btn-reset" onclick="resetForm(this)">Reset for This Task</button>
+    <div class="note-output"></div>
+  </div>
+
+  <script>
+    function toggleVisibility(header) {
+      const section = header.closest('.task-section');
+      const isOpen = section.open;
+      section.open = !isOpen;
+    }
+
+    function resetForm(button) {
+      const taskSection = button.closest(".task-section");
+      taskSection.querySelectorAll("input[type='checkbox']").forEach(box => box.checked = false);
+      taskSection.querySelectorAll("textarea").forEach(textarea => textarea.value = "N/A");
+      taskSection.querySelector(".note-output").style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".include-subtask").forEach(box => {
+        box.addEventListener("change", function () {
+          const li = this.closest("li");
+          if (this.checked) {
+            const now = new Date();
+            this.setAttribute("data-timestamp", now.toLocaleString());
+            let stamp = li.querySelector(".timestamp-display");
+            if (!stamp) {
+              stamp = document.createElement("span");
+              stamp.className = "timestamp-display timestamp";
+              li.appendChild(stamp);
+            }
+            stamp.textContent = `(Completed: ${now.toLocaleString()})`;
+          } else {
+            this.removeAttribute("data-timestamp");
+            const stamp = li.querySelector(".timestamp-display");
+            if (stamp) stamp.remove();
+          }
+        });
+      });
+    });
+
+    function generateNote(button) {
+      const taskSection = button.closest(".task-section");
+      const title = taskSection.querySelector(".task-header").innerText.trim();
+      let note = `Secure Access CRM Note\n\nOutcome: ${title}\n`;
+
+      taskSection.querySelectorAll(".subtasks li").forEach(task => {
+        const checkbox = task.querySelector("input[type='checkbox']");
+        const text = task.querySelector("label").innerText.trim();
+        if (checkbox && checkbox.checked) {
+          const timestamp = checkbox.getAttribute("data-timestamp");
+          note += `• ${text}${timestamp ? ` (Completed: ${timestamp})` : ''}\n`;
+        }
+      });
+
+      const additionalNotes = taskSection.querySelector("#additional-notes").value.trim();
+      if (additionalNotes && additionalNotes !== "N/A") {
+        note += `\nAdditional Notes:\n${additionalNotes}\n`;
+      }
+
+      const blockers = taskSection.querySelector("#blockers").value.trim();
+      if (blockers && blockers !== "N/A") {
+        note += `\nBlockers Identified:\n${blockers}\n`;
+      }
+
+      const crossSell = taskSection.querySelector("#cross-sell").value.trim();
+      if (crossSell && crossSell !== "N/A") {
+        note += `\nCross-sell Opportunities Identified:\n${crossSell}\n`;
+      }
+
+      const caseOpen = taskSection.querySelector("#case-open").value.trim();
+      if (caseOpen && caseOpen !== "N/A") {
+        note += `\nCase Open:\n${caseOpen}\n`;
+      }
+
+      const featureRequest = taskSection.querySelector("#feature-request").value.trim();
+      if (featureRequest &&
